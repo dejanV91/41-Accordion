@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-function Questions(title) {
+function Questions({ id, info, title }) {
+  const [show, setShow] = useState(false);
+
   return (
-    <article key={20} id={20} className="question">
+    <article id={id} className="question">
       <header>
-        <h4>{"title"}</h4>
-        <button className="btn">
-          <AiOutlinePlus />
+        <h4>{title}</h4>
+        <button className="btn" onClick={() => setShow(!show)}>
+          {show ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>
-      <p>{"nesto"}</p>
+      <p>{show && info}</p>
     </article>
   );
 }
